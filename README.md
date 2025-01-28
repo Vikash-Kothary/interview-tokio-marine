@@ -23,6 +23,8 @@ Commands:
 
 ## Usage
 
+Please see `docs/src/openapi.json` for the API documentation.
+
 ### Prerequities
 
 I use `GNU Make` and `Poetry` to simplify the usage for this project. You can run this project without them but they speed things up considerably.
