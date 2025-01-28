@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "interview-tokio-marine"
+version = "0.1.0"
+description = ""
+authors = ["Vikash Kothary <kothary.vikash@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "tokio_marine", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.115.7"}
+uvicorn = "^0.34.0"
+pytest = "^8.3.4"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+fastapi-cli = "^0.0.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
