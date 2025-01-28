@@ -1,7 +1,8 @@
-from typing import Optional
+from typing import Optional, Dict, List
 
 from fastapi import APIRouter, HTTPException, Depends
 
+from tokio_marine.domain.models import InsurancePolicy
 from tokio_marine.domain.exceptions import PolicyNotFoundException
 from tokio_marine.infrastructure.routes.dependencies import get_policy_service
 
@@ -12,7 +13,12 @@ router = APIRouter()
 # NOTE: API versioning and RESTful resources.
 # NOTE: Typically would map from domain exceptions to api errors.
 # Here I'm mapping to an empty list to be inline with restful standards
-@router.get("/api/v1/policies")
+# TODO: Use data transfer object e.g. PolicyResponse to decouple api response and domain models.
+
+@router.get(
+    "/api/v1/policies",
+    response_model=Dict[str, List[InsurancePolicy]]
+)
 def list_policies(policy_id: Optional[str] = None):   
     policy_service = get_policy_service()
 
