@@ -29,8 +29,6 @@ I use `GNU Make` and `Poetry` to simplify the usage for this project. You can ru
 
 Look in the `Makefile` for the individual commands you'd need to run the project.
 
-Of course, you'll need `Python` and `Docker` to run the lambda.
-
 ### Running locally
 
 1. Run `make config` to create the `config/.env.local`
