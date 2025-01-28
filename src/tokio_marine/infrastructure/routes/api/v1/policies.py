@@ -10,7 +10,8 @@ router = APIRouter()
 # I am using a query parameter for this example to keep things simple
 # I would normally use a separate endpoint.
 # NOTE: API versioning and RESTful resources.
-# NOTE: Mapping from domain exceptions to api errors.
+# NOTE: Typically would map from domain exceptions to api errors.
+# Here I'm mapping to an empty list to be inline with restful standards
 @router.get("/api/v1/policies")
 def list_policies(policy_id: Optional[str] = None):   
     policy_service = get_policy_service()
@@ -20,7 +21,7 @@ def list_policies(policy_id: Optional[str] = None):
             policy = policy_service.get_policy_by_id(policy_id)
             return { 'policies': [policy] }
         except PolicyNotFoundException:
-            raise HTTPException(status_code=404)
+            return { 'policies': [] }
 
     policies = policy_service.list_policies()
     return { 'policies': policies }
